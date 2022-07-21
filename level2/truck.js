@@ -1,68 +1,35 @@
-function Queue() {
-  this.data = [];
-}
-Queue.prototype.enqueue = function (v) {
-  this.data.push(v);
-};
-Queue.prototype.dequeue = function () {
-  return this.data.shift() || null;
-};
-Queue.prototype.size = function () {
-  return this.data.length;
-};
-Queue.prototype.sum = function () {
-  return this.data.length;
-};
-
-var queue1 = new Queue();
-
-const bridge_length = 2;
-const weight = 10;
-const truck_weights = [7, 4, 5, 6];
-let second = 0;
+const bridge_length = 100;
+const weight = 100;
+const truck_weights = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
 
 const solution = () => {
-  let bridge = [];
-  bridge.push([truck_weights[0], 1]);
-  second += 1;
+  let bridge = new Array(bridge_length).fill(0);
+  let second = 0;
+  let sum = -1;
 
-  let i = 0;
-  while (bridge.length !== 0) {
-    if (bridge[i][1] > bridge_length) {
-      bridge.shift(); // 다리를 지남
-    } else {
-      bridge[i][1] += 1; //
+  while (sum !== 0) {
+    second += 1;
+    sum = 0;
+    for (var j = 1; j < bridge.length; j++) {
+      sum += bridge[j]; // 다리 위 트럭 무게 다 더하기
+    }
+    if (truck_weights.length !== 0) {
+      sum += truck_weights[0]; // 대기 트럭 중 첫번째 트럭 무게 더하기
     }
 
-    console.log(bridge);
-
-    let sum = 0;
-    for (var j = 0; j < bridge.length; j++) {
-      sum += bridge[j][0];
+    // 이동
+    bridge[0] = 0;
+    for (var j = 0; j < bridge.length - 1; j++) {
+      bridge[j] = bridge[j + 1];
     }
-    sum += truck_weights[i + 1];
+    bridge[bridge_length - 1] = 0;
 
-    console.log(sum);
-    bridge.shift();
-
-    console.log("-----------");
-    if (sum < weight) {
-      bridge.push([truck_weights[i + 1], 1]);
-    } else {
+    // 태우기
+    if (truck_weights.length !== 0 && sum <= weight) {
+      bridge[bridge_length - 1] = truck_weights[0];
+      truck_weights.shift();
     }
-    // second += 1;
   }
-
-  // let truck2 = truck_weights;
-  // truck2 = truck2.map((t) => [t, 0]);
-
-  // while (truck2.length !== 0) {
-  //   second += 1;
-  //   for(var i=0; i<truck2.length; i++) {
-  //     truck2[i][1] += 1;
-  //   }
-
-  // }
 
   return second;
 };
