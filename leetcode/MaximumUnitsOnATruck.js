@@ -27,4 +27,15 @@ var maximumUnits = function (boxTypes, truckSize) {
   return sum;
 };
 
+var maximumUnits = function (boxTypes, truckSize) {
+  let anx = 0;
+  boxTypes.sort((a, b) => b[1] - a[1]);
+  for (let i = 0; truckSize && i < boxTypes.length; i++) {
+    let cnt = Math.min(boxTypes[i][0], truckSize);
+    anx += cnt * boxTypes[i][1];
+    truckSize -= cnt;
+  }
+  return anx;
+};
+
 console.log(maximumUnits(boxTypes, truckSize));
