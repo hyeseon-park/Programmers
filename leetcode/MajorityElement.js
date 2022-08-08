@@ -19,4 +19,20 @@ var majorityElement = function (nums) {
   return anx;
 };
 
+var majorityElement = function (nums) {
+  let anx = nums[0];
+  let cnt = 1;
+  for (var i = 1; i < nums.length; i++) {
+    if (cnt == 0) {
+      cnt++;
+      anx = nums[i];
+    } else if (anx === nums[i]) {
+      cnt++;
+    } else {
+      cnt--;
+    }
+  }
+  return anx;
+};
+
 console.log(majorityElement(nums));
