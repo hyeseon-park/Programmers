@@ -7,12 +7,36 @@ const solution = () => {
   let right = [3, 2];
 
   for (var i in numbers) {
-    let now = solve(numbers[i]);
+    let n = numbers[i];
+    let now = solve(n);
+    if (n === 1 || n === 4 || n === 7) {
+      anx += "L";
+      left = now;
+    } else if (n === 3 || n === 6 || n === 9) {
+      anx += "R";
+      right = now;
+    } else {
+      let LD = Math.abs(left[0] - now[0]) + Math.abs(left[1] - now[1]);
+      let RD = Math.abs(right[0] - now[0]) + Math.abs(right[1] - now[1]);
 
-    anx += "L";
-    anx += "R";
+      if (LD < RD) {
+        anx += "L";
+        left = now;
+      } else if (RD < LD) {
+        anx += "R";
+        right = now;
+      } else {
+        if (hand === "left") {
+          anx += "L";
+          left = now;
+        } else {
+          anx += "R";
+          right = now;
+        }
+      }
+    }
   }
-  return "";
+  return anx;
 };
 
 const solve = (pos) => {
