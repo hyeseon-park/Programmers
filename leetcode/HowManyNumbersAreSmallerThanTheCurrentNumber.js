@@ -1,4 +1,4 @@
-let nums = [6, 5, 4, 8];
+let nums = [6, 4, 4, 8];
 
 var smallerNumbersThanCurrent = function (nums) {
   let arr = [];
@@ -10,6 +10,15 @@ var smallerNumbersThanCurrent = function (nums) {
       }
     }
     arr[i] = cnt;
+  }
+  return arr;
+};
+
+var smallerNumbersThanCurrent = function (nums) {
+  let sortedNums = [...nums].sort((a, b) => a - b);
+  let arr = [];
+  for (var i = 0; i < nums.length; i++) {
+    arr.push(sortedNums.indexOf(nums[i]));
   }
   return arr;
 };
