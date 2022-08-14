@@ -22,4 +22,21 @@ var intersection = function (nums1, nums2) {
   return arr;
 };
 
+var intersection = function (nums1, nums2) {
+  let hashmap = new Map();
+
+  for (var i in nums1) {
+    hashmap.set(nums1[i], 1);
+  }
+
+  return nums2.filter((n) => {
+    if (hashmap.has(n)) {
+      hashmap.delete(n);
+      return true;
+    } else {
+      return false;
+    }
+  });
+};
+
 console.log(intersection(nums1, nums2));
