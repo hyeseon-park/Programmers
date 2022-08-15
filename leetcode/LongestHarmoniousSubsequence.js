@@ -25,4 +25,25 @@ var findLHS = function (nums) {
   return max;
 };
 
+var findLHS = function (nums) {
+  let hashmap = new Map();
+  for (var i = 0; i < nums.length; i++) {
+    let num = nums[i];
+    if (hashmap.has(num)) {
+      hashmap.set(num, hashmap.get(num) + 1);
+    } else {
+      hashmap.set(num, 1);
+    }
+  }
+
+  let max = 0;
+  hashmap.forEach(function (value, key) {
+    if (hashmap.has(key + 1)) {
+      max = Math.max(max, hashmap.get(key) + hashmap.get(key + 1));
+    }
+  });
+
+  return max;
+};
+
 console.log(findLHS(nums));
