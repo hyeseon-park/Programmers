@@ -12,4 +12,18 @@ var sortArrayByParity = function (nums) {
   return nums;
 };
 
+var sortArrayByParity = function (nums) {
+  let arr = [];
+  let notArr = [];
+  for (var i = 0; i < nums.length; i++) {
+    if (nums[i] % 2 === 0) {
+      arr.push(nums[i]);
+    } else {
+      notArr.push(nums[i]);
+    }
+  }
+
+  return arr.concat(notArr);
+};
+
 console.log(sortArrayByParity(nums));
