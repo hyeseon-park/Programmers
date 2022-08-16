@@ -4,13 +4,15 @@ var findEvenNumbers = function (digits) {
   let set = new Set();
 
   for (var i = 0; i < digits.length; i++) {
+    if (digits[i] === 0) continue;
     for (var j = 0; j < digits.length; j++) {
       if (i === j) continue;
       for (var k = 0; k < digits.length; k++) {
         if (i === k) continue;
         if (j === k) continue;
+        if (digits[k] % 2 !== 0) continue;
         let num = String(digits[i]) + String(digits[j]) + String(digits[k]);
-        if (num >= 100 && num < 1000 && num % 2 === 0) set.add(Number(num));
+        set.add(Number(num));
       }
     }
   }
