@@ -16,4 +16,28 @@ var fizzBuzz = function (n) {
   return arr;
 };
 
+var fizzBuzz = function (n) {
+  let arr = [];
+  let f = 0;
+  let b = 0;
+  for (var i = 1; i < n + 1; i++) {
+    f++;
+    b++;
+    if (f === 3 && b === 5) {
+      arr.push("FizzBuzz");
+      f = 0;
+      b = 0;
+    } else if (f === 3) {
+      arr.push("Fizz");
+      f = 0;
+    } else if (b === 5) {
+      arr.push("Buzz");
+      b = 0;
+    } else {
+      arr.push(String(i));
+    }
+  }
+  return arr;
+};
+
 console.log(fizzBuzz(n));
