@@ -8,4 +8,11 @@ var dayOfYear = function (date) {
   return days + 1;
 };
 
+var dayOfYear = function (date) {
+  return (
+    (new Date(date) - new Date(date.substring(0, 4))) / (24 * 60 * 60 * 1000) +
+    1
+  );
+};
+
 console.log(dayOfYear(date));
