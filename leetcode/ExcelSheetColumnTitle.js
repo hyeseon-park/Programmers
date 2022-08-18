@@ -1,4 +1,4 @@
-let columnNumber = 52;
+let columnNumber = 701;
 
 var convertToTitle = function (columnNumber) {
   let anx = "";
@@ -19,6 +19,19 @@ var convertToTitle = function (columnNumber) {
       anx = alphabet + anx;
       quotient = parseInt(quotient / 26);
     }
+  }
+
+  return anx;
+};
+
+var convertToTitle = function (columnNumber) {
+  let anx = "";
+
+  while (columnNumber > 0) {
+    columnNumber--;
+    let remainder = columnNumber % 26;
+    columnNumber = parseInt(columnNumber / 26);
+    anx = String.fromCharCode(remainder + 65) + anx;
   }
 
   return anx;
