@@ -18,4 +18,14 @@ var countGoodSubstrings = function (s) {
   return cnt;
 };
 
+var countGoodSubstrings = function (s) {
+  let cnt = 0;
+  for (var i = 0; i < s.length - 2; i++) {
+    let tmpS = s.substring(i, i + 3);
+    let set = new Set(tmpS);
+    if (set.size === 3) cnt++;
+  }
+  return cnt;
+};
+
 console.log(countGoodSubstrings(s));
