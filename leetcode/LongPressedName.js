@@ -1,5 +1,5 @@
-let name = "rick";
-let typed = "kric";
+let name = "alex";
+let typed = "aaleexa";
 
 var isLongPressedName = function (name, typed) {
   let typedArr = [];
@@ -30,6 +30,24 @@ var isLongPressedName = function (name, typed) {
     }
   }
   return true;
+};
+
+var isLongPressedName = function (name, typed) {
+  let nameArr = name.split("");
+  let typedArr = typed.split("");
+  let n = 0;
+  let i = 0;
+  while (n < nameArr.length && i < typedArr.length) {
+    if (nameArr[n] === typedArr[i]) {
+      n++;
+    } else {
+      if (i === 0 || typedArr[i] !== typedArr[i - 1]) {
+        return false;
+      }
+    }
+    i++;
+  }
+  return i === typed.length;
 };
 
 console.log(isLongPressedName(name, typed));
