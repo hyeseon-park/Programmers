@@ -1,5 +1,5 @@
-let g = [1, 2];
-let s = [1, 2, 3];
+let g = [10, 9, 8, 7];
+let s = [5, 6, 7, 8];
 
 var findContentChildren = function (g, s) {
   let cnt = 0;
@@ -13,6 +13,22 @@ var findContentChildren = function (g, s) {
         break;
       }
     }
+  }
+  return cnt;
+};
+
+var findContentChildren = function (g, s) {
+  let cnt = 0;
+  g.sort((a, b) => a - b);
+  s.sort((a, b) => a - b);
+  let i = 0;
+  let j = 0;
+  while (i < g.length && j < s.length) {
+    if (g[i] <= s[j]) {
+      cnt++;
+      i++;
+    }
+    j++;
   }
   return cnt;
 };
