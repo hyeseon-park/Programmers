@@ -32,4 +32,19 @@ var diagonalSort = function (mat) {
   return anxArr;
 };
 
+var diagonalSort = function (mat) {
+  function setDiagonal(mat, y, x) {
+    let diag = [];
+    let size = Math.min(mat.length - y, mat[0].length - x);
+    for (let i = 0; i < size; i++) diag.push(mat[i + y][i + x]);
+    diag.sort((a, b) => a - b);
+    for (let i = 0; i < size; i++) mat[i + y][i + x] = diag[i];
+  }
+
+  for (var i = 0; i < mat[0].length; i++) setDiagonal(mat, 0, i);
+  for (var j = 1; j < mat.length; j++) setDiagonal(mat, j, 0);
+
+  return mat;
+};
+
 console.log(diagonalSort(mat));
