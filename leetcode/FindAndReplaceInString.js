@@ -18,15 +18,12 @@ var findReplaceString = function (s, indices, sources, targets) {
     if (tmpS === arr[i][1]) {
       s =
         s.substring(0, indice + acc) +
-        ("*" + i + "*") +
+        arr[i][2] +
         s.substring(indice + len + acc, s.length);
-      acc += ("*" + i + "*").length - len;
+      acc += arr[i][2].length - len;
     }
   }
 
-  for (var i = 0; i < targets.length; i++) {
-    s = s.replace("*" + i + "*", arr[i][2]);
-  }
   return s;
 };
 
