@@ -24,4 +24,20 @@ var removeSubfolders = function (folder) {
   return [...set];
 };
 
+var removeSubfolders = function (folder) {
+  let set = new Set();
+  folder.sort();
+
+  outer: for (var i = 0; i < folder.length; i++) {
+    for (var j = 2; j < folder[i].length; ++j) {
+      if (folder[i].charAt(j) === "/" && set.has(folder[i].substring(0, j))) {
+        continue outer;
+      }
+    }
+    set.add(folder[i]);
+  }
+
+  return [...set];
+};
+
 console.log(removeSubfolders(folder));
