@@ -18,7 +18,7 @@ var numSmallerByFrequency = function (queries, words) {
 
 var f = function (s) {
   let arr = s.split("").sort();
-  return arr.reduce((cnt, data) => (data === arr[0] ? cnt + 1 : cnt), 0);
+  return arr.reduce((accum, data) => (data === arr[0] ? accum + 1 : accum), 0);
 };
 
 console.log(numSmallerByFrequency(queries, words));
