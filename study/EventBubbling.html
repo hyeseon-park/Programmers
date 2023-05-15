@@ -1,0 +1,32 @@
+<style>
+  body * {
+    margin: 10px;
+    border: 1px solid blue;
+  }
+</style>
+
+<body>
+  <div class="DIV1">
+    DIV1
+    <div class="DIV2">
+      DIV2
+      <div class="DIV3">
+        DIV3
+        <div class="DIV4">DIV4</div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  const divs = document.querySelectorAll("div");
+
+  const clickEvent = (e) => {
+    e.stopPropagation();
+    console.log(e.currentTarget.className);
+  };
+
+  divs.forEach((div) => {
+    div.addEventListener("click", clickEvent);
+  });
+</script>
