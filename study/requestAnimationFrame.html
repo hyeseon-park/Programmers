@@ -1,0 +1,35 @@
+<style>
+  .value {
+    margin-top: -5rem;
+    font-size: 7rem;
+    font-weight: 100;
+    text-align: center;
+  }
+</style>
+
+<body>
+  <img class="rocket" src="./rocket.png" />
+  <div class="value">DIV</div>
+</body>
+
+<script>
+  const rocket = document.querySelector(".rocket");
+  const value = document.querySelector(".value");
+  let yPos = 0;
+  let rafId;
+
+  function render() {
+    value.innerHTML = yPos;
+    rocket.style.transform = `translateY(${-yPos}px)`;
+    yPos += 10;
+
+    rafId = requestAnimationFrame(render);
+    if (yPos > 500) cancelAnimationFrame(rafId);
+  }
+
+  render();
+
+  window.addEventListener("click", () => {
+    cancelAnimationFrame(rafId);
+  });
+</script>
