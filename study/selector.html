@@ -1,0 +1,58 @@
+<style type="text/css">
+  div {
+    width: 300px;
+  }
+  div ul {
+    border: 3px dotted blue;
+  }
+  div > ul {
+    border: 3px dotted red;
+  }
+  ol + ul {
+    border: 3px dotted green;
+  }
+  ol ~ ul {
+    border: 3px dotted yellow;
+  }
+</style>
+
+<body>
+  <div class="section">
+    <ol>
+      <li>리스트 아이템1-1</li>
+      <li>리스트 아이템1-2</li>
+    </ol>
+
+    <ul>
+      <li>
+        리스트 아이템2-1
+        <ol>
+          <li>리스트 아이템2-1-1</li>
+          <li>리스트 아이템2-1-2</li>
+        </ol>
+      </li>
+      <li>
+        리스트 아이템2-2
+        <ul>
+          <li>리스트 아이템2-2-1</li>
+          <li>리스트 아이템2-2-2</li>
+        </ul>
+      </li>
+    </ul>
+
+    <ol>
+      <li>리스트 아이템3-1</li>
+      <li>리스트 아이템3-2</li>
+    </ol>
+
+    <ul>
+      <li>리스트 아이템4-1</li>
+      <li>리스트 아이템4-2</li>
+    </ul>
+
+    <ul>
+      <li>리스트 아이템5-1</li>
+      <li>리스트 아이템5-2</li>
+    </ul>
+  </div>
+</body>
