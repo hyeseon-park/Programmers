@@ -27,7 +27,31 @@ function makeCounter() {
   };
 }
 
-let counter = makeCounter();
-console.log(counter()); // 0
+// let counter = makeCounter();
+// console.log(counter()); // 0
+// console.log(counter()); // 1
+// console.log(counter()); // 2
+
+const x = 1;
+function outer() {
+  const x = 10;
+  const inner = function () {
+    console.log(x);
+  };
+  return inner;
+}
+
+const innerFunc = outer();
+innerFunc();
+
+const increase = function () {
+  let num = 0;
+  return function () {
+    return ++num;
+  };
+};
+
+let counter = increase();
 console.log(counter()); // 1
 console.log(counter()); // 2
+console.log(counter()); // 3
